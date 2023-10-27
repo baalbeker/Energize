@@ -3,7 +3,6 @@ import {getFirestore} from "firebase/firestore";
 import {getAuth, GoogleAuthProvider } from "firebase/auth"
 import { getStorage} from "firebase/storage"
 
-
 const firebaseConfig = {
   apiKey: "AIzaSyAa0wafio-lw74IU6--uKT9urs0MVl-tAg",
   authDomain: "fitnesstracker-47280.firebaseapp.com",
@@ -14,7 +13,6 @@ const firebaseConfig = {
   measurementId: "G-4J5BJ90QGR"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app)
 export const auth = getAuth(app)

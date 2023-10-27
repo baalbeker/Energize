@@ -5,17 +5,11 @@ import UserTestimonials from '../../components/LandingPageComponents/UserTestimo
 import LandingPageNav from '../../components/LandingPageComponents/LandingPageNav'; 
 import HowItWorks from '../../components/LandingPageComponents/HowItWorks';
 import LandingPageFooter from '../../components/LandingPageComponents/LandingPageFooter'
-import About from "../About/About"
+import About from "../../components/LandingPageComponents/About";
 
-/**
- * Renders the LandingPage component.
- */
 const LandingPage = () => {
     const navigate = useNavigate();
-
-    const navigateToLogin = () => {
-        navigate("/login");
-    };
+    const navigateToLogin = () => navigate("/login");
 
     return (
         <div>

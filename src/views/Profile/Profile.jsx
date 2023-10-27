@@ -4,15 +4,12 @@ import { ToastContainer } from "react-toastify";
 import { GiBodyHeight } from "react-icons/gi";
 import { AuthContext } from "../../context/AuthContext";
 import { useContext } from "react";
-
 import DeleteUserDialog from "../../components/ProfileComponents/DeleteUserDialog";
 import PageContainer from "../../components/ProfileComponents/PageContainer";
 import PageContent from "../../components/ProfileComponents/PageContent";
 import ProfileLogic from "../../logic/ProfileLogic/ProfileLogic";
+import Footer from "../../components/Footer/Footer";
 
-/**
- * Renders the Profile component.
- */
 export default function Profile() {
   const {name,email,photoURL,family,username,weight,height,phoneNumber} = useContext(AuthContext);
   const {
@@ -49,12 +46,12 @@ export default function Profile() {
           <Heading marginBottom="1.5rem">Edit profile</Heading>
 
           <Box bg="secondary.card" rounded="lg" p={5}>
-            <Avatar size="2xl" name={name} src={photoURL} />
+            <Avatar size="2xl" src={photoURL} />
             <Stack spacing={4} marginBottom="1rem">
               <FormControl>
                 <FormLabel htmlFor="name">Your first name</FormLabel>
                 <InputGroup>
-                  <InputLeftElement children={ <Icon as={FaRegUser} color="secondary.inputHelper" />}/>
+                  <InputLeftElement><Icon as={FaRegUser} color="secondary.inputHelper" /></InputLeftElement>
                   <Input
                     focusBorderColor="main.500"
                     type="text"
@@ -70,7 +67,7 @@ export default function Profile() {
               <FormControl>
                 <FormLabel htmlFor="family">Your family name</FormLabel>
                 <InputGroup>
-                  <InputLeftElement  children={<Icon as={FaRegUser} color="secondary.inputHelper" />}/>
+                  <InputLeftElement><Icon as={FaRegUser} color="secondary.inputHelper" /></InputLeftElement>
                   <Input
                     focusBorderColor="main.500"
                     type="text"
@@ -86,7 +83,7 @@ export default function Profile() {
               <FormControl>
                 <FormLabel htmlFor="username">Username</FormLabel>
                 <InputGroup>
-                  <InputLeftElement  children={<Icon as={FaRegUser} color="secondary.inputHelper" />}/>
+                  <InputLeftElement><Icon as={FaRegUser} color="secondary.inputHelper" /></InputLeftElement>
                   <Input
                     focusBorderColor="main.500"
                     type="text"
@@ -102,7 +99,7 @@ export default function Profile() {
               <FormControl>
                 <FormLabel htmlFor="email">Email Address</FormLabel>
                 <InputGroup>
-                  <InputLeftElement children={<Icon as={FaRegEnvelope} color="secondary.inputHelper" />}/>
+                  <InputLeftElement><Icon as={FaRegEnvelope} color="secondary.inputHelper" /></InputLeftElement>
                   <Input
                     focusBorderColor="main.500"
                     type="email"
@@ -118,7 +115,7 @@ export default function Profile() {
               <FormControl>
                 <FormLabel htmlFor="phone">Phone Number</FormLabel>
                 <InputGroup>
-                  <InputLeftElement  children={<Icon as={FaPhoneAlt} color="secondary.inputHelper" />}/>
+                  <InputLeftElement><Icon as={FaPhoneAlt} color="secondary.inputHelper" /></InputLeftElement>
                   <Input
                     focusBorderColor="main.500"
                     type="number"
@@ -134,7 +131,7 @@ export default function Profile() {
               <FormControl>
                 <FormLabel htmlFor="weight">Weight</FormLabel>
                 <InputGroup>
-                  <InputLeftElement  children={<Icon as={FaWeightHanging} color="secondary.inputHelper" />}/>
+                  <InputLeftElement><Icon as={FaWeightHanging} color="secondary.inputHelper" /></InputLeftElement>
                   <Input
                     focusBorderColor="main.500"
                     type="number"
@@ -150,7 +147,7 @@ export default function Profile() {
               <FormControl>
                 <FormLabel htmlFor="height">Height</FormLabel>
                 <InputGroup>
-                  <InputLeftElement  children={<Icon as={GiBodyHeight} color="secondary.inputHelper" />}/>
+                  <InputLeftElement><Icon as={GiBodyHeight} color="secondary.inputHelper" /></InputLeftElement>
                   <Input
                     focusBorderColor="main.500"
                     type="number"
@@ -195,7 +192,7 @@ export default function Profile() {
                   <FormLabel htmlFor="old_password">Current password</FormLabel>
                 </Stack>
                 <InputGroup>
-                  <InputLeftElement children={ <Icon as={FaLock} color="secondary.inputHelper" />}/>
+                  <InputLeftElement><Icon as={FaLock} color="secondary.inputHelper" /></InputLeftElement>
                   <Input
                     focusBorderColor="main.500"
                     name="old_password"
@@ -212,7 +209,7 @@ export default function Profile() {
                   <FormLabel htmlFor="new_password">New password</FormLabel>
                 </Stack>
                 <InputGroup>
-                  <InputLeftElement children={ <Icon as={FaLock} color="secondary.inputHelper" />}/>
+                  <InputLeftElement><Icon as={FaLock} color="secondary.inputHelper" /></InputLeftElement>
                   <Input
                     focusBorderColor="main.500"
                     name="new_password"
@@ -231,7 +228,7 @@ export default function Profile() {
                   </FormLabel>
                 </Stack>
                 <InputGroup>
-                  <InputLeftElement children={ <Icon as={FaLock} color="secondary.inputHelper" /> }/>
+                  <InputLeftElement><Icon as={FaLock} color="secondary.inputHelper" /></InputLeftElement>
                   <Input
                     focusBorderColor="main.500"
                     name="new_password2"
@@ -249,7 +246,7 @@ export default function Profile() {
                   <FormLabel htmlFor="new_avatar">Upload new avatar</FormLabel>
                 </Stack>
                 <InputGroup>
-                  <InputLeftElement children={ <Icon as={FaLock} color="secondary.inputHelper" /> }/>
+                  <InputLeftElement><Icon as={FaLock} color="secondary.inputHelper" /></InputLeftElement>
                   <Input
                     focusBorderColor="main.500"
                     type="file"
@@ -262,30 +259,14 @@ export default function Profile() {
             </Stack>
           </Box>
 
-          <Stack
-            direction={["column", "row"]}
-            spacing="1rem"
-            justify="end"
-            marginTop="2rem"
-          >
-            <Button
-              type="submit"
-              colorScheme="main"
-              variant="outline"
-              onClick={updateInfo}
-            >
+          <Stack direction={["column", "row"]} spacing="1rem" justify="end" marginTop="2rem">
+            <Button type="submit" colorScheme="main" variant="outline" onClick={updateInfo}>
               Update settings
             </Button>
-            <Button colorScheme="main" variant="outline" onClick={handleCancel}>
-              Cancel
-            </Button>
+            <Button colorScheme="main" variant="outline" onClick={handleCancel}>Cancel</Button>
           </Stack>
-          <Divider
-            marginTop="2rem"
-            marginBottom="2rem"
-            orientation="horizontal"
-          />
-          <Box bg="secondary.card" rounded="lg" p={5} marginBottom="2rem">
+          <Divider marginTop="2rem" marginBottom="2rem" orientation="horizontal"/>
+          <Box bg="secondary.card" rounded="lg">
             <Stack spacing={0} marginBottom="1rem">
               <Heading as="h4" size="md">
                 Danger zone
@@ -294,12 +275,13 @@ export default function Profile() {
                 Delete your account and data
               </Text>
             </Stack>
-            <Stack spacing={4} marginBottom="1rem">
-            <DeleteUserDialog handleDeleteUser={handleDeleteUser} />
+            <Stack>
+              <DeleteUserDialog handleDeleteUser={handleDeleteUser} />
             </Stack>
-            <ToastContainer />
+            <ToastContainer position="top-center" style={{ zIndex: 2001, top: 30 }} />
           </Box>
         </Container>
+        <Footer/>
       </PageContent>
     </PageContainer>
   );

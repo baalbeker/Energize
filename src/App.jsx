@@ -25,7 +25,6 @@ import LandingPage from "./views/LandingPage/LandingPage";
 import Dashboard from "./views/Dashboard/Dashboard";
 import UserMenu from "./components/UserMenu/UserMenu";
 import Friends from "./views/Friends/Friends";
-import Footer from "./components/Footer/Footer";
 import EnergizeGame from "./components/EnergizeGame/EnergizeGame";
 
 function App() {
@@ -51,7 +50,6 @@ function App() {
   const [sharedWorkouts, setSharedWorkouts] = useState([]);
   const [finishedWorkouts, setFinishedWorkouts] = useState([]);
 
-
   const [userGoal, setUserGoal] = useState("")
   const [currentGoal, setCurrentGoal] = useState({ calory: 0 });
   const [mainGoals, setMainGoals] = useState([]);
@@ -60,7 +58,6 @@ function App() {
   const [finishedGoals, setFinishedGoals] = useState([]);
   const [requests, setRequests] = useState([]);
   const [energizePoints, setEnergizePoints] = useState(0)
-
 
   const { colorMode } = useColorMode();
   const usersCollection = collection(db, "users");
@@ -363,24 +360,14 @@ function App() {
             }}>
             <ChakraProvider>
               <Flex className="App" position="relative">
-                {isAuth &&
-                  location.pathname !== "/register" &&
-                  location.pathname !== "/login" && <Navigation colorMode={colorMode} />}
-                {isAuth &&
-                  location.pathname !== "/register" &&
-                  location.pathname !== "/login" && <UserMenu />}
-                <Flex
-                  as="main"
-                  flexGrow={1}
-                  justifyContent="center"
-                  alignItems="center"
-                  p={5}
-                >
+                {isAuth && location.pathname !== "/register" && location.pathname !== "/login" && <Navigation colorMode={colorMode} />}
+                {isAuth && location.pathname !== "/register" && location.pathname !== "/login" && <UserMenu />}
+                <Flex as="main" flexGrow={1} justifyContent="center" alignItems="center">
                   <Flex as="main" direction="column" minHeight="100vh" flexGrow={1} flexShrink={0} justifyContent="center" alignItems="center" p={5}>
                     <Routes marginBottom="auto">
                       <Route path="/" element={isAuth ? <Dashboard /> : <LandingPage />} />
-                      <Route path="/dashboard" element={<Dashboard colorMode={colorMode} />} />
-                      <Route path="/workouts" element={<Workouts />} />
+                      <Route path="dashboard" element={<Dashboard />} />
+                      <Route path="workouts" element={<Workouts />} />
                       <Route path="goals" element={<Goals />} />
                       <Route path="community" element={<Community />} />
                       <Route path="friends" element={<Friends />} />
@@ -390,8 +377,7 @@ function App() {
                       <Route path="energizeConquest" element={<EnergizeGame/>}/>
                       <Route path="*" element={<NotFound />} />
                     </Routes>
-                    {location.pathname !== "/" && location.pathname !== "/community" && location.pathname !== "/workouts" ? <Footer /> : null}
-                    {location.pathname === "/" ? <ThemeButton/> : null}
+                    <ThemeButton/>
                   </Flex>
                 </Flex>
               </Flex>
